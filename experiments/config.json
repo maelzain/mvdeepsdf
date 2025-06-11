@@ -1,0 +1,13 @@
+{
+  "cars_dir": "/home/ahmad/Desktop/Mahdi/cars/02958343",
+  "output_dir": "./experiments",
+  "batch_size": 8,
+  "num_epochs": 1000,
+  "learning_rate": 0.0005,
+  "latent_dim": 256,
+  "weight_decay": 1e-06,
+  "latent_reg_weight": 0.0001,
+  "num_workers": 4,
+  "save_every": 10,
+  "num_sdf_samples": 16384
+}
