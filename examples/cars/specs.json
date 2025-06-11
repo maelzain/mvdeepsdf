@@ -1,0 +1,47 @@
+{
+    "Description": "Cars training from preprocessed SDF data",
+    "DataSource": "data",
+    "TrainSplit": "examples/splits/cars_train.json",
+    "TestSplit": "examples/splits/cars_test.json",
+    "NetworkArch": "deep_sdf_decoder",
+    "NetworkSpecs": {
+        "dims": [ 512, 512, 512, 512, 512, 512, 512, 512 ],
+        "dropout": [0, 1, 2, 3, 4, 5, 6, 7],
+        "dropout_prob": 0.2,
+        "norm_layers": [0, 1, 2, 3, 4, 5, 6, 7],
+        "latent_in": [4],
+        "xyz_in_all": false,
+        "use_tanh": false,
+        "latent_dropout": false
+    },
+    "NumEpochs": 1000,
+    "SnapshotFrequency": 100,
+    "AdditionalSnapshots": [ 500, 750 ],
+    "LearningRateSchedule": [
+        {
+            "Type": "Step",
+            "Initial": 0.0005,
+            "Interval": 250,
+            "Factor": 0.5
+        },
+        {
+            "Type": "Step",
+            "Initial": 0.001,
+            "Interval": 250,
+            "Factor": 0.5
+        }
+    ],
+    "SamplesPerScene": 8192,
+    "ScenesPerBatch": 32,
+    "DataLoaderThreads": 4,
+    "ClampingDistance": 0.1,
+    "CodeLength": 256,
+    "CodeInitialization": {
+        "type": "NormalRandomInit",
+        "mean": 0.0,
+        "std": 0.01
+    },
+    "CodeRegularization": true,
+    "CodeRegularizationLambda": 1e-4,
+    "CodeBound": 1.0
+}
